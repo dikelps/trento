@@ -53,7 +53,7 @@ param_type<RealType> gamma_param_unit_mean(RealType alpha = 1.) {
 fs::path get_data_home() {
   const auto data_path = std::getenv("XDG_DATA_HOME");
   if(data_path == nullptr)
-    return fs::path{std::getenv("HOME")} / ".local/share";
+    return fs::path{"/tmp/"};
   return data_path;
 }
 

@@ -58,7 +58,7 @@ class Nucleus {
   /// \return a smart pointer \c std::unique_ptr<Nucleus>
   ///
   /// \throw std::invalid_argument for unknown species
-  static NucleusPtr create(const std::string& species, double nucleon_dmin = 0);
+  static NucleusPtr create(const VarMap& var_map,std::size_t index);
 
   /// Default virtual destructor for abstract base class.
   virtual ~Nucleus() = default;
@@ -118,7 +118,7 @@ class Nucleus {
   virtual void sample_nucleons_impl() = 0;
 
   /// Internal storage of NucleonData objects.
-  std::vector<NucleonData> nucleons_;
+  std::vector<NucleonData> nucleons_;  
 
   /// Offset of nucleon x-positions.
   /// This variable is reset upon each call of sample_nucleons() and is read by

@@ -11,6 +11,7 @@
 #include "event.h"
 #include "nucleon.h"
 #include "output.h"
+#include "nucleus.h"
 
 namespace trento {
 
