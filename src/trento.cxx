@@ -13,6 +13,7 @@
 
 #include "collider.h"
 #include "fwd_decl.h"
+#include "nucleus.h"
 
 // CMake sets this definition.
 // Fall back to a sane default.
@@ -138,7 +139,37 @@ int main(int argc, char* argv[]) {
      "maximum impact parameter [fm]")
     ("random-seed",
      po::value<int64_t>()->value_name("INT")->default_value(-1, "auto"),
-     "random seed");
+     "random seed")
+     ("nucleon-number1",
+     po::value<int64_t>()->value_name("INT")->default_value(1, "0"),
+     "nucleon number1")
+     ("half-height-radius1",
+     po::value<double>()->value_name("FLOAT")->default_value(0, "0"),
+     "half height radius1[fm]")
+     ("skin-depth1",
+     po::value<double>()->value_name("FLOAT")->default_value(0, "0"),
+     "skin depth1[fm]")
+     ("beta1",
+     po::value<double>()->value_name("FLOAT")->default_value(0, "0"),
+     "beta1")
+     ("gamma1",
+     po::value<double>()->value_name("FLOAT")->default_value(0, "0"),
+     "gamma1")
+     ("nucleon-number2",
+     po::value<int64_t>()->value_name("INT")->default_value(1, "0"),
+     "nucleon number2")
+     ("half-height-radius2",
+     po::value<double>()->value_name("FLOAT")->default_value(0, "0"),
+     "half height radius2[fm]")
+     ("skin-depth2",
+     po::value<double>()->value_name("FLOAT")->default_value(0, "0"),
+     "skin depth2[fm]")
+     ("beta2",
+     po::value<double>()->value_name("FLOAT")->default_value(0, "0"),
+     "beta2")
+     ("gamma2",
+     po::value<double>()->value_name("FLOAT")->default_value(0, "0"),
+     "gamma2");
 
   OptDesc grid_opts{"grid options"};
   grid_opts.add_options()
@@ -183,7 +214,7 @@ int main(int argc, char* argv[]) {
       std::cout
         << usage_str
         << "\n"
-           "projectile = { p | d | Cu | Cu2 | Xe | Au | Au2 | Pb | U | U2 | U3 }\n"
+           "projectile = { p | d | Cu | Cu2 | Xe | Au | Au2 | Pb | U | U2 | U3 | custom1 | custom2, for custom1/2 specify appropriate --nucleon-number1/2, --half-height-radius1/2, --skin-depth1/2, --beta1/2, --gamma1/2 options }\n"
         << usage_opts
         << "\n"
            "see the online documentation for complete usage information\n";

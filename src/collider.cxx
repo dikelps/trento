@@ -27,7 +27,7 @@ NucleusPtr create_nucleus(const VarMap& var_map, std::size_t index) {
   const auto& species = var_map["projectile"]
                         .as<std::vector<std::string>>().at(index);
   const auto& nucleon_dmin = var_map["nucleon-min-dist"].as<double>();
-  return Nucleus::create(species, nucleon_dmin);
+  return Nucleus::create(var_map, index);
 }
 
 // Determine the maximum impact parameter.  If the configuration contains a
@@ -108,7 +108,7 @@ std::tuple<double, int> Collider::sample_collision() {
 
   do {
     // Sample b from P(b)db = 2*pi*b.
-    b = bmin_ + (bmax_ - bmin_) * std::sqrt(random::canonical<double>());
+    b = std::sqrt(bmin_ * bmin_ + (bmax_ * bmax_ - bmin_ * bmin_) * random::canonical<double>());
 
     // Offset each nucleus depending on the asymmetry parameter (see header).
     nucleusA_->sample_nucleons(asymmetry_ * b);
