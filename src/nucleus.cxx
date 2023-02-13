@@ -71,10 +71,10 @@ namespace trento
           238, 6.67, 0.440, 0.280, 0.093, nucleon_dmin}};
     else if (species == "custom1")
       return NucleusPtr{new DeformedWoodsSaxonNucleus{
-          var_map["nucleon-number1"].as<int64_t>(), var_map["half-height-radius1"].as<double>(), var_map["skin-depth1"].as<double>(), var_map["beta1"].as<double>(), var_map["gamma1"].as<double>(), nucleon_dmin}};
+          var_map["nucleon-number1"].as<int64_t>(), var_map["half-height-radius1"].as<double>(), var_map["skin-depth1"].as<double>(), var_map["betatwo1"].as<double>(), var_map["betafour1"].as<double>(), nucleon_dmin}};
     else if (species == "custom2")
       return NucleusPtr{new DeformedWoodsSaxonNucleus{
-          var_map["nucleon-number2"].as<int64_t>(), var_map["half-height-radius2"].as<double>(), var_map["skin-depth2"].as<double>(), var_map["beta2"].as<double>(), var_map["gamma2"].as<double>(), nucleon_dmin}};
+          var_map["nucleon-number2"].as<int64_t>(), var_map["half-height-radius2"].as<double>(), var_map["skin-depth2"].as<double>(), var_map["betatwo2"].as<double>(), var_map["betafour2"].as<double>(), nucleon_dmin}};
     
     // Read nuclear configurations from HDF5.
     else if (hdf5::filename_is_hdf5(species))
